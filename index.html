@@ -15,13 +15,21 @@
       scroll-behavior: smooth;
     }
     header {
-      background: linear-gradient(135deg, #2c3e50, #34495e);
+      background: url('background.jpg') no-repeat center/cover;
       color: #fff;
       padding: 40px 20px 60px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       position: relative;
     }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+    header * { position: relative; z-index: 1; }
+
     nav {
       position: absolute;
       top: 15px; right: 20px;
@@ -33,41 +41,35 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #1abc9c;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1rem;
-    }
-    header a {
-      color: #1abc9c;
-      text-decoration: none;
-    }
+    nav a:hover { color: #1abc9c; }
+
+    header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    header p { font-size: 1rem; }
+    header a { color: #1abc9c; text-decoration: none; }
+
     .btn {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
+      margin-top: 10px;
+      padding: 8px 15px;
       background: #1abc9c;
       color: #fff;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 0.9rem;
       transition: background 0.3s ease;
     }
     .btn:hover { background: #16a085; }
+
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 30px auto;
       padding: 20px;
     }
     section {
       background: #fff;
-      margin-bottom: 20px;
-      padding: 25px;
+      margin-bottom: 30px;
+      padding: 30px;
       border-radius: 12px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       transition: transform 0.2s ease;
@@ -78,8 +80,9 @@
       margin-bottom: 15px;
       border-left: 5px solid #1abc9c;
       padding-left: 10px;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
+
     ul { list-style: none; }
     ul li {
       margin-bottom: 10px;
@@ -87,11 +90,40 @@
       position: relative;
     }
     ul li::before {
+      content: "•";
       position: absolute;
       left: 0;
       color: #1abc9c;
       font-weight: bold;
     }
+
+    /* GRID GALLERY */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fdfdfd;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s;
+      padding-bottom: 15px;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card h3 {
+      padding: 10px;
+      font-size: 1rem;
+      color: #2c3e50;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -100,6 +132,12 @@
       margin-top: 30px;
     }
     footer p { font-size: 0.9rem; }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      nav { position: static; margin-bottom: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -110,88 +148,145 @@
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
       <a href="#certifications">Certifications</a>
+      <a href="#projects">Projects</a>
       <a href="#activities">Activities</a>
     </nav>
     <img src="S Rishaban img.jpg" alt="S Rishaban Photo"
-     style="width:250px; height:250px; border-radius:100%; object-fit:cover; margin-bottom:30px; border:6px solid #1abc9c;">
+     style="width:200px; height:200px; border-radius:100%; object-fit:cover; margin-bottom:20px; border:6px solid #1abc9c;">
     <h1>S Rishaban</h1>
-    <p>Email: srishaban7@gmail.com | Phone: +91-6380670541 | <a href="https://www.linkedin.com/in/rishaban-s-4386242a8">LinkedIn</a></p>
+    <p>Email: srishaban7@gmail.com | Phone: +91-6380670541 | 
+      <a href="https://www.linkedin.com/in/rishaban-s-4386242a8">LinkedIn</a></p>
     <a href="My Resume.pdf" class="btn" download>Download Resume</a>
   </header>
 
   <div class="container">
     <section id="summary">
       <h2>Executive Summary</h2>
-      <p>Energetic and detail-oriented Computer Science graduate with foundational knowledge in programming, cloud technologies and UIUX Designing. Certified in AWS DevOps and UI/UX Design, seeking to begin a career in a dynamic IT environment where I can contribute to real-world projects and grow as a professional.</p>
+      <p>Energetic and detail-oriented Computer Science graduate with knowledge in programming, cloud technologies and UI/UX Designing. Certified in AWS DevOps and UI/UX Design, seeking to contribute to real-world projects.</p>
     </section>
 
     <section id="skills">
       <h2>Skills</h2>
       <ul>
-        <li><strong>● Cloud & DevOps:</strong> Docker, Kubernetes, Terraform, Jenkins, CI/CD Pipelines (GitHub Actions, Azure DevOps), AWS (Basics), Azure (Basics).</li>
-        <li><strong>● UI/UX Design:</strong> Wireframing, Prototyping (Figma, Adobe XD), UI Design, UX Research, Responsive Design, Usability Testing.</li>
-        <li><strong>● Python.</li>
-        <li><strong>● Power BI.</strong></li>
-        <li><strong>● MySQL Basics:</strong> (from academic subjects).</li>
-        <li><strong>● MS Office:</strong> (for documentation & reporting).</li>
+        <li>Cloud & DevOps: Docker, Kubernetes, Terraform, Jenkins, CI/CD, AWS, Azure.</li>
+        <li>UI/UX Design: Wireframing, Prototyping (Figma, Adobe XD), UX Research, Accessibility.</li>
+        <li>Python</li>
+        <li>Power BI</li>
+        <li>MySQL Basics</li>
+        <li>MS Office</li>
       </ul>
-    </section>
-
-    <section id="Additional Skills">
-      <h2>Additional Skills</h2>
-      <ul>
-        <li>● Problem Solving.</li>
-        <li>● Debugging.</li>
-        <li>● Team Collaboration.</li>
-        <li>● Communication.</li>
-       <ul>
     </section>
 
     <section id="education">
       <h2>Education</h2>
       <ul>
-        <li><strong>● B.Sc Computer Science</strong> – Periyar Maniammai Institute of Science and Technology, Vallam, Thanjavur (2022 - 2025).</li>
-        <li><strong>● 12th Standard</strong> – Government Higher Secondary School, Melaulur, Thanjavur (2021 - 2022).</li>
+        <li><strong>B.Sc Computer Science</strong> – PMIST, Thanjavur (2022 - 2025).</li>
+        <li><strong>12th Standard</strong> – Govt HSS, Thanjavur (2021 - 2022).</li>
       </ul>
     </section>
 
     <section id="experience">
       <h2>Experience</h2>
       <ul>
-        <li><strong>● Cloud & DevOps</strong> (2025): Worked on deploying web apps on Azure and AWS using CI/CD pipelines.</li>
-        <li><strong>● AWS DevOps Implementation:</strong> Monitored, troubleshot, and optimized performance of various AWS services including EC2, S3, RDS, ELB, EBS.</li>
-        <li><strong>● UI/UX Design Certification Project:</strong> Hands-on experience in wireframing, prototyping, and Figma tools. Studied design principles, user flow, and accessibility.</li>
-        <li><strong>● Portfolio Website:</strong> Personal website hosted on GitHub Pages.</li>
+        <li><strong>Cloud & DevOps</strong> (2025): Deployed apps on Azure & AWS using CI/CD.</li>
+        <li><strong>AWS DevOps Implementation:</strong> Monitored & optimized EC2, S3, RDS, ELB, EBS.</li>
+        <li><strong>UI/UX Certification Project:</strong> Worked on Figma prototypes, user flows & design principles.</li>
+        <li><strong>Portfolio Website:</strong> Hosted personal resume site on GitHub Pages.</li>
       </ul>
     </section>
 
-    <section id="languages">
-      <h2>Languages</h2>
-      <ul>
-        <li>● Tamil.</li>
-        <li>● English.</li>
-      </ul>
-    </section>
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="project2.jpg" alt="Project 2">
+      <h3>CI/CD Deployment on Azure</h3>
+      <a href="project2.jpg" download class="btn">Download</a>
+    </div>
 
+    <div class="card">
+      <h3>Poster Design Projects (6 Posters)</h3>
+      
+      <!-- Poster 1 -->
+      <div class="poster-card">
+        <img src="Aaruv Cattering.jpg" alt="Poster 1">
+        <a href="Aaruv Cattering.jpg" download class="btn">Download Poster 1</a>
+      </div>
+
+      <!-- Poster 2 -->
+      <div class="poster-card">
+        <img src="Puma Poster.jpg" alt="Poster 2">
+        <a href="Puma Poster.jpg" download class="btn">Download Poster 2</a>
+      </div>
+
+      <!-- Poster 3 -->
+      <div class="poster-card">
+        <img src="Rolex Watch.jpg" alt="Poster 3">
+        <a href="Rolex Watch.jpg" download class="btn">Download Poster 3</a>
+      </div>
+
+      <!-- Poster 4 -->
+      <div class="poster-card">
+        <img src="Jaden Smith.jpg" alt="Poster 4">
+        <a href="Jaden Smith.jpg" download class="btn">Download Poster 4</a>
+      </div>
+
+      <!-- Poster 5 -->
+      <div class="poster-card">
+        <img src="Joyalukas Poster.jpg" alt="Poster 5">
+        <a href="Joyalukas Poster.jpg" download class="btn">Download Poster 5</a>
+      </div>
+
+      <!-- Poster 6 -->
+      <div class="poster-card">
+        <img src="Varshini Textile.jpg" alt="Poster 6">
+        <a href="Varshini Textile.jpg" download class="btn">Download Poster 6</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- CERTIFICATES SECTION -->
     <section id="certifications">
       <h2>Certifications</h2>
-      <ul>
-        <li><strong>● AWS Certified DevOps Engineer:</strong> (In Progress) Expected Completion: September 10, 2025 / Qtree Technologies, Coimbatore.</li>
-        <li><strong>● Cloud:</strong> Cloud Platform Job Simulation in Verizon.</li>
-        <li><strong>● Python:</strong> Marcello Tech, Trichy.</li>
-        <li><strong>● UI/UX Designing:</strong> PMKVY, Jeyram Educational Trust, Thanjavur.</li>
-        <li><strong>● Data Visualization and Analytics with Power BI:</strong> PMIST, Thanjavur. Duration: March 24-29, 2025.</li>
-      </ul>
+      <div class="grid">
+        <div class="card">
+          <img src="aws-cert.jpg" alt="AWS Certificate">
+          <h3>AWS DevOps Certification</h3>
+          <a href="aws-cert.jpg" download class="btn">Download</a>
+        </div>
+        <div class="card">
+          <img src="cloud-cert.jpg" alt="Cloud Certificate">
+          <h3>Cloud Simulation (Verizon)</h3>
+          <a href="cloud-cert.jpg" download class="btn">Download</a>
+        </div>
+        <div class="card">
+          <img src="python-cert.jpg" alt="Python Certificate">
+          <h3>Python - Marcello Tech</h3>
+          <a href="python-cert.jpg" download class="btn">Download</a>
+        </div>
+        <div class="card">
+          <img src="uiux-cert.jpg" alt="UI/UX Certificate">
+          <h3>UI/UX Design - PMKVY</h3>
+          <a href="uiux-cert.jpg" download class="btn">Download</a>
+        </div>
+        <div class="card">
+          <img src="powerbi-cert.jpg" alt="PowerBI Certificate">
+          <h3>Power BI Workshop</h3>
+          <a href="powerbi-cert.jpg" download class="btn">Download</a>
+        </div>
+      </div>
     </section>
 
     <section id="activities">
       <h2>Activities</h2>
-         <p>Participated in the "Data Visualization with Power BI" workshop at PMIST, Thanjavur. Volunteered in National Service Scheme (NSS) activities, including awareness drives, and blood donation camp (2023).</p>
+      <p>Participated in Power BI workshop at PMIST. Volunteered in NSS awareness drives and blood donation camps.</p>
     </section>
   </div>
 
   <footer>
-    <p>© 2025 S Rishaban </p>
+    <p>THANK YOU</p>
   </footer>
 </body>
 </html>
